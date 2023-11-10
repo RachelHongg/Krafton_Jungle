@@ -1,35 +1,36 @@
-import math
 import sys
+import math
 
-n = 10000
+n = int(sys.stdin.readline())
+arr = list(int(sys.stdin.readline()) for _ in range(n))
 
-def prime():
-    list = [True] * n
-    m = int(math.sqrt(n))
-    for i in range(2, m + 1):
-        if list[i] == True:
-            for j in range(i+i, n, i):
-                list[j] = False
-    return [i for i in range(2, n) if list[i] == True]
+box = [1] * 10001
+box[0] = 0
+box[1] = 0
 
-x = int(sys.stdin.readline())
+for i in range(2, 101):
+    j = 2
+    if(box[i] == 1):
+        while(i * j < 10001):
+            box[i * j] = 0      
+            j = j + 1
 
-if x % 2 == 0:
-    x_1 = x // 2
-    x_2 = x // 2
+result = []
 
-
-primes = prime()
-   
-for i in range(len(prime())):
-    if primes[i] == x_1:
-        for j in range(len(prime())):
-            if primes[j] == x_2:
-                print(x_1, x_2)
-    else:
-        x_1 -= 1
-        x_2 += 1
-
+for i in range(10001):
+    if(box[i] == 1):
+        result.append(i)
+        
+for num in arr:
+    x = num // 2
+    y = num // 2
+    while(True): 
+        if(x in result):
+            if(y in result):
+                print(x, y)
+                break
+        x = x - 1
+        y = y + 1
     
     
     
