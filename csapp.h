@@ -180,6 +180,18 @@ ssize_t	rio_readnb(rio_t *rp, void *usrbuf, size_t n);
 ssize_t	rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen);
 
 /* Wrappers for Rio package */
+/*
+** ssize_t Rio_readn(int fd, void *usrbuf, size_t n);
+* 이 함수는 파일 디스크립터(fd)에서 최대 n 바이트만큼 데이터를 읽어 usrbuf로 복사합니다. 그러나 n바이트만큼의 데이터를 읽을 수 없는 경우에도 완료됩니다. 읽은 바이트 수를 반환하며, 에러가 발생하면 음수 값을 반환합니다.
+** void Rio_writen(int fd, void *usrbuf, size_t n);
+* 이 함수는 usrbuf에 있는 데이터를 파일 디스크립터(fd)에 최대 n 바이트만큼 씁니다. 데이터를 완전히 쓴 후에야 반환됩니다.
+** void Rio_readinitb(rio_t *rp, int fd);
+* 이 함수는 버퍼링된 입출력을 위한 rio_t 구조체를 초기화하며, 주어진 파일 디스크립터(fd)를 사용하여 이 구조체를 설정합니다.
+** ssize_t Rio_readnb(rio_t *rp, void *usrbuf, size_t n);
+* 이 함수는 rio_t 구조체(rp)를 사용하여 최대 n 바이트만큼 데이터를 읽어 usrbuf로 복사합니다. 하지만 n바이트만큼의 데이터를 읽을 수 없는 경우에도 완료됩니다. 읽은 바이트 수를 반환하며, 에러가 발생하면 음수 값을 반환합니다.
+** ssize_t Rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen);
+이 함수는 rio_t 구조체(rp)를 사용하여 최대 maxlen - 1 바이트만큼의 데이터를 읽어 usrbuf로 복사합니다. 읽은 데이터에 개행 문자가 포함되어 있거나 maxlen - 1 바이트를 모두 읽을 때까지 완료됩니다. 읽은 바이트 수를 반환하며, 에러가 발생하면 음수 값을 반환합니다.
+*/
 ssize_t Rio_readn(int fd, void *usrbuf, size_t n);
 void Rio_writen(int fd, void *usrbuf, size_t n);
 void Rio_readinitb(rio_t *rp, int fd); 
