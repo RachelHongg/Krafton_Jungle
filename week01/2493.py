@@ -29,14 +29,10 @@ for i in range(n):
             break
         else:
             stack.pop()
-    stack.push([i, top[i]])
+    stack.append([i, top[i]])
  
 print(*answer)
-# print(answer)
 
-# while문에 break
-# 시간복잡도,공간복잡도
-# *answer
-# 스택 직전에 최대값 -> 스택이용하자!
+
 
 
